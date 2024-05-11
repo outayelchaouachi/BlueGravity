@@ -9,6 +9,7 @@ public class ToolTip : MonoBehaviour
     // Get references to UI elements in the item UI prefab
     TextMeshProUGUI toolTipText;
     RectTransform backgroundRectTransform;
+
     private void Awake()
     {
         Instance = this;
@@ -16,13 +17,20 @@ public class ToolTip : MonoBehaviour
         backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
         ShowToolTip("Othellos says hi!");
     }
+
     private void Update()
     {
+        FixTooltipToMouseCursor();
+    }
+
+    private void FixTooltipToMouseCursor()
+    {
         Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(),Input.mousePosition ,null, out localPoint);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, null, out localPoint);
         transform.localPosition = localPoint;
     }
 
+    //Show the tooltip a custom text
     private void ShowToolTip(string toolTipstring)
     {
         gameObject.SetActive(true);
@@ -34,26 +42,16 @@ public class ToolTip : MonoBehaviour
         StartCoroutine(HideTooltipAfterDelay(2f));
     }
 
-    // Coroutine to deactivate the tooltip after a delay
-    private IEnumerator HideTooltipAfterDelay(float delay)
-    {
-        // Wait for the specified duration
-        yield return new WaitForSeconds(delay);
-
-        // Deactivate the tooltip
-        gameObject.SetActive(false);
-    }
-    private void HideToolTip()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void ShowToolTip_Static(string toolTipstring)
     {
         ShowToolTip(toolTipstring);
     }
-    public void HideToolTip_Static()
+
+    // Coroutine to deactivate the tooltip after a delay
+    private IEnumerator HideTooltipAfterDelay(float delay)
     {
-        HideToolTip();
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
     }
+
 }

@@ -9,11 +9,14 @@ public class Shopkeeper : MonoBehaviour
     public GameObject itemToSellPrefab; // The prefab for the item
     public Transform itemListParent; // Parent object for the item UI elements
     public List<Item> shopInventory; // List of items in the shop
+    public GameObject popUp; // Reference to the Pop-up GameObject
+
 
     private void Start()
     {
         ListShopItems();
     }
+
     // Method to List the shop with items to sell
     public void ListShopItems()
     {
@@ -79,7 +82,6 @@ public class Shopkeeper : MonoBehaviour
         }
         else
         {
-
             if (PlayerController.Instance.IsItemEquipped(item))
             {
                 ToolTip.Instance.ShowToolTip_Static("Unable to sell equipped item !");
@@ -87,6 +89,36 @@ public class Shopkeeper : MonoBehaviour
             }
             ToolTip.Instance.ShowToolTip_Static("Item not in inventory !");
             Debug.Log("Unable to sell item: " + item.itemName + ". Not in inventory or equipped.");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Display pop-up when the player enters the trigger collider
+            popUp.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UIManager.Instance.OpenShop();
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Hide pop-up when the player exits the trigger collider
+            popUp.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Player") && Input.GetKeyUp(KeyCode.E)) 
+        {
+            UIManager.Instance.OpenShop();
         }
     }
 }

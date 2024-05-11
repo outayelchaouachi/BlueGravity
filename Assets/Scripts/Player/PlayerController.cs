@@ -1,27 +1,28 @@
+using TMPro;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class PlayerController : MonoBehaviour
 {
-
+    // Singleton instance
     public static PlayerController Instance;
 
-    public int playerCurrency=5000;
+    public int playerCurrency=500;
 
     public SpriteRenderer headSpriteRenderer;
     public SpriteRenderer torsoSpriteRenderer;
     public SpriteRenderer legsSpriteRenderer;
-    // Add more SpriteRenderers for other body parts as needed
-
     private Item equippedHead;
     private Item equippedTorso;
     private Item equippedlegs;
-    // Add more equipped items variables for other body parts as needed
+
+    public TextMeshProUGUI balanceText;
+
 
     private void Awake()
     {
         Instance = this;
-
+        balanceText.text =playerCurrency.ToString();  
     }
 
     public void EquipItem(Item item)
@@ -67,11 +68,13 @@ public class PlayerController : MonoBehaviour
     public void DeductCurrency(int price)
     {
         playerCurrency -= price;
+        balanceText.text=playerCurrency.ToString();
     }
 
     public void AddCurrency(int price)
     {
         playerCurrency += price;
+        balanceText.text = playerCurrency.ToString();
     }
 
 

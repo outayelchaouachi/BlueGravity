@@ -2,25 +2,16 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    // Singleton instance
+    public static UIManager Instance;
+
     public GameObject inventoryUI;
     public GameObject shopUI;
     private bool isInventoryOpen = false;
 
-    // Singleton instance
-    public static UIManager instance;
-
     void Awake()
     {
-        // Singleton pattern to ensure only one instance of UIManager exists
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Debug.LogWarning("Multiple instances of UIManager found!");
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
     void Update()
@@ -31,25 +22,36 @@ public class UIManager : MonoBehaviour
             ToggleInventory();
         }
 
-        // Check for interaction with shopkeeper
-        if (Input.GetMouseButtonDown(0)) // Assuming left mouse button for interaction
+        // Check for interaction with shopkeeper left mouse clic
+        if (Input.GetMouseButtonDown(0))
         {
-            InteractWithShopkeeper();
+            //InteractWithShopkeeper();
         }
     }
 
+    // Toggle Inventory
     void ToggleInventory()
     {
         isInventoryOpen = !isInventoryOpen;
         inventoryUI.SetActive(isInventoryOpen);
     }
 
+
+    // Close Shop & Inventory
     public void CloseShop()
     {
         shopUI.SetActive(false);
         inventoryUI.SetActive(false);
     }
 
+    public void OpenShop() 
+    {
+        // Open shop UI and display inventory
+        shopUI.SetActive(true);
+        inventoryUI.SetActive(true);
+    }
+
+    //Interaction with the shopkeeper
     void InteractWithShopkeeper()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
