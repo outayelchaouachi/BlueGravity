@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         dir.x = (Input.GetAxisRaw("Horizontal"));
         dir.y = (Input.GetAxisRaw("Vertical"));
-        rb.velocity = dir;
+        rb.velocity= dir * speed;
     }
     private void Flip()
     {
