@@ -5,13 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2.5f;
+    //Movement Variables
+    [SerializeField] private float speed = 2.5f;
     Rigidbody2D rb;
-    Animator animator;
-
     Vector2 dir =Vector2.zero;
-
     private bool faceLeft=false;
+    //Animator
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +68,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             animator.SetBool("IsWalking", true);
+            AudioManager.Instance.PlayLoopSFX("WalkingSfx");
         }
         else
         {
             animator.SetBool("IsWalking", false);
+            AudioManager.Instance.StopLoopSfx("WalkingSfx");
+
         }
     }
 }

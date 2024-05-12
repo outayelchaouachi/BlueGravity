@@ -218,8 +218,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5745650309473931283}
+  - component: {fileID: 7670679886881441891}
   m_Layer: 5
-  m_Name: ItemToSell
+  m_Name: ShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +252,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 499.3547, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7670679886881441891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441116318183494960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65572e3b8dad114a8d243c5f995f534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: {fileID: 6965032011164997167}
+  itemPrice: {fileID: 6621181060680931105}
+  itemImage: {fileID: 7369172533152991551}
+  EquipButton: {fileID: 0}
+  buyButton: {fileID: 854636403522539982}
+  sellButton: {fileID: 3389485274863789341}
 --- !u!1 &3712766217144841425
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,15 @@
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     // Singleton instance
     public static UIManager Instance;
-
+    // References to UI elements
     public GameObject inventoryUI;
     public GameObject shopUI;
     private bool isInventoryOpen = false;
+    public TextMeshProUGUI balanceText;
 
     void Awake()
     {
@@ -44,11 +46,17 @@ public class UIManager : MonoBehaviour
         inventoryUI.SetActive(false);
     }
 
+    //Open Shop & Inventory UI
     public void OpenShop() 
     {
         // Open shop UI and display inventory
         shopUI.SetActive(true);
         inventoryUI.SetActive(true);
+    }
+
+    public void UpdatePlayerBlance(int balance)
+    {
+        balanceText.text = balance.ToString();
     }
 
     //Interaction with the shopkeeper

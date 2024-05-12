@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4952433691549843957}
   - component: {fileID: 7079061589218063810}
   - component: {fileID: 6412936533735976911}
+  - component: {fileID: 8101766269060178680}
   m_Layer: 5
-  m_Name: Item 1
+  m_Name: PlayerItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +123,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8101766269060178680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672307997130783994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65572e3b8dad114a8d243c5f995f534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: {fileID: 7773734183540603301}
+  itemPrice: {fileID: 0}
+  itemImage: {fileID: 3866684053885843492}
+  EquipButton: {fileID: 6412936533735976911}
+  buyButton: {fileID: 0}
+  sellButton: {fileID: 0}
 --- !u!1 &5858603338554955068
 GameObject:
   m_ObjectHideFlags: 0

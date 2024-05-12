@@ -6,7 +6,7 @@ using UnityEngine;
 public class ToolTip : MonoBehaviour
 {
     public static ToolTip Instance;
-    // Get references to UI elements in the item UI prefab
+    // References to UI elements in the item UI prefab
     TextMeshProUGUI toolTipText;
     RectTransform backgroundRectTransform;
 
@@ -23,6 +23,7 @@ public class ToolTip : MonoBehaviour
         FixTooltipToMouseCursor();
     }
 
+    //Attach the tooltip to follow mouse
     private void FixTooltipToMouseCursor()
     {
         Vector2 localPoint;
